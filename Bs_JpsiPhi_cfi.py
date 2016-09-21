@@ -42,6 +42,15 @@ configurationMetadata = cms.untracked.PSet(
     annotation = cms.untracked.string('Spring 2015: Pythia8+EvtGen130 generation of Bs --> J/psi phi, 13TeV, Tune CUETP8M1')
     )
 
+### begin Alberto's filtering technique ####
+bmesonFilter = cms.EDFilter("MCSingleParticleYPt",
+    ParticleID = cms.untracked.vint32(511,521,531,541),
+    MinPt = cms.untracked.vdouble(1.5,1.5,1.5,1.5),
+    MinY = cms.untracked.vdouble(-3.,-3.,-3.,-3.),
+    MaxY = cms.untracked.vdouble(3.,3.,3.,3.)
+)
+### end Alberto's filtering technique ####
+
 bfilter = cms.EDFilter(
     "PythiaFilter",
     MaxEta = cms.untracked.double(9999.),
