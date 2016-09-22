@@ -26,7 +26,11 @@ generator = cms.EDFilter("Pythia8GeneratorFilter",
                          
                          PythiaParameters = cms.PSet(pythia8CommonSettingsBlock,
                                                      pythia8CUEP8M1SettingsBlock,
-                                                     processParameters = cms.vstring("SoftQCD:nonDiffractive = on"),
+                                                     processParameters = cms.vstring('SoftQCD:nonDiffractive = on',
+                                                                                    'PTFilter:filter = on',
+                                                                                    'PTFilter:quarkToFilter = 5',
+                                                                                    'PTFilter:scaleToFilter = 1.0',
+                                                                                    ),
                                                      parameterSets = cms.vstring('pythia8CommonSettings',
                                                                                  'pythia8CUEP8M1Settings',
                                                                                  'processParameters',
@@ -42,14 +46,6 @@ configurationMetadata = cms.untracked.PSet(
     annotation = cms.untracked.string('Spring 2015: Pythia8+EvtGen130 generation of Bs --> J/psi phi, 13TeV, Tune CUETP8M1')
     )
 
-### begin Alberto's filtering technique ####
-bmesonFilter = cms.EDFilter("MCSingleParticleYPt",
-    ParticleID = cms.untracked.vint32(511,521,531,541),
-    MinPt = cms.untracked.vdouble(1.5,1.5,1.5,1.5),
-    MinY = cms.untracked.vdouble(-3.,-3.,-3.,-3.),
-    MaxY = cms.untracked.vdouble(3.,3.,3.,3.)
-)
-### end Alberto's filtering technique ####
 
 bfilter = cms.EDFilter(
     "PythiaFilter",
