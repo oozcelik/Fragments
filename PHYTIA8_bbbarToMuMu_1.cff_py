@@ -25,7 +25,7 @@ generator = cms.EDFilter("Pythia8GeneratorFilter",
 
     configurationMetadata = cms.untracked.PSet(
     version = cms.untracked.string('$Revision: 1.1 $'),
-    name = cms.untracked.string('$Source: Configuration/Generator/python/PYTHIA8_InclH2Mu_CUEP8M1_13TeV_cff.py $'),
+    name = cms.untracked.string('$Source: Configuration/Generator/python/PHYTIA8_bbbarToMuMu_1.cff_py $'),
     annotation = cms.untracked.string('Spring 2015: Pythia8 generation enriched with b-bbar -> mumu, 13TeV, Tune CUEP8M1')
     )
 
