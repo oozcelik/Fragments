@@ -38,4 +38,4 @@ mugenfilter = cms.EDFilter("MCSmartSingleParticleFilter",
                            Status = cms.untracked.vint32(1,1),
                            )
 
-ProductionFilterSequence = cms.Sequence(generator*mugenfilter*bfilter)
+ProductionFilterSequence = cms.Sequence(generator*mugenfilter)
