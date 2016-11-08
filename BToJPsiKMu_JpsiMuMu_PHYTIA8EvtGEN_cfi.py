@@ -16,7 +16,7 @@ generator = cms.EDFilter("Pythia8GeneratorFilter",
             EvtGen130 = cms.untracked.PSet(
             decay_table = cms.string('GeneratorInterface/EvtGenInterface/data/DECAY_2010_NOLONGLIFE.DEC'),  
             particle_property_file = cms.FileInPath('GeneratorInterface/EvtGenInterface/data/evt.pdl'),
-            user_decay_file = cms.vstring('GeneratorInterface/ExternalDecays/data/Bu_mumuK.dec'),
+            user_decay_file = cms.vstring('GeneratorInterface/ExternalDecays/data/Bu_JpsiK.dec'),
             list_forced_decays = cms.vstring('MyB+','MyB-'),
             operates_on_particles = cms.vint32()
             ),
@@ -61,10 +61,10 @@ decayfilter = cms.EDFilter(
     verbose         = cms.untracked.int32(1), 
     NumberDaughters = cms.untracked.int32(3), 
     ParticleID      = cms.untracked.int32(521),  ## Bu  
-    DaughterIDs     = cms.untracked.vint32(321, -13, 13), ## K+, mu+, mu-
-    MinPt           = cms.untracked.vdouble(-1., 2.5, 2.5),  
-    MinEta          = cms.untracked.vdouble(-9999., -2.5, -2.5), 
-    MaxEta          = cms.untracked.vdouble( 9999.,  2.5,  2.5)
+    DaughterIDs     = cms.untracked.vint32(443, 321), ## K+, mu+, mu-
+    MinPt           = cms.untracked.vdouble(-1., 2.5),  
+    MinEta          = cms.untracked.vdouble(-2.5, -2.5), 
+    MaxEta          = cms.untracked.vdouble( 2.5,  2.5)
     )
 
 muFilter = cms.EDFilter(
