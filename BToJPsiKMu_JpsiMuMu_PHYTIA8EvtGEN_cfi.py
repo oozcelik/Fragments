@@ -55,25 +55,35 @@ bufilter = cms.EDFilter(
     ParticleID = cms.untracked.int32(521) ## Bu
     )
 
+jpsifilter = cms.EDFilter(
+    "PythiaDauVFilter",
+    verbose         = cms.untracked.int32(1), 
+    NumberDaughters = cms.untracked.int32(2), 
+    MotherID        = cms.untracked.int32(521),  
+    ParticleID      = cms.untracked.int32(443),  # J/psi
+    DaughterIDs     = cms.untracked.vint32(13, -13), # mu+ mu-
+    MinPt           = cms.untracked.vdouble(-99., -99.), 
+    MinEta          = cms.untracked.vdouble(-9999., -9999.), 
+    MaxEta          = cms.untracked.vdouble( 9999.,  9999.)
+    )
 
-decayfilter = cms.EDFilter(
+decayfilter = cms.EDFilter(  # you may apply cuts on J/psi and K+ here.
     "PythiaDauVFilter",
     verbose         = cms.untracked.int32(1), 
     NumberDaughters = cms.untracked.int32(3), 
     ParticleID      = cms.untracked.int32(521),  ## Bu  
-    DaughterIDs     = cms.untracked.vint32(443, 321), ## K+, mu+, mu-
-    MinPt           = cms.untracked.vdouble(-1., 2.5),  
+    DaughterIDs     = cms.untracked.vint32(443, 13), ## J/psi, K+
+    MinPt           = cms.untracked.vdouble(2., 2.),  
     MinEta          = cms.untracked.vdouble(-2.5, -2.5), 
     MaxEta          = cms.untracked.vdouble( 2.5,  2.5)
     )
 
-muFilter = cms.EDFilter(
-    "PythiaFilter",
-    MaxEta = cms.untracked.double(3.0),
-    MinEta = cms.untracked.double(-3.0),
-    MaxPt = cms.untracked.double(9999.),
-    MinPt = cms.untracked.double(3.0),
-    ParticleID = cms.untracked.int32(13)
+muFilter = cms.EDFilter("MCSingleParticleFilter", # you may apply cuts on additional muon/anti-muon
+    MaxEta = cms.untracked.double(2.5, 2.5),
+    MinEta = cms.untracked.double(-2.5, -2.5),
+    MaxPt = cms.untracked.double(9999., 9999.),
+    MinPt = cms.untracked.double(1., 1.),
+    ParticleID = cms.untracked.int32(13, -13)
     )
 
 ProductionFilterSequence = cms.Sequence(generator*bufilter*decayfilter*muFilter)
