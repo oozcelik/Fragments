@@ -21,7 +21,8 @@ generator = cms.EDFilter("Pythia8GeneratorFilter",
         pythia8CommonSettingsBlock,
         pythia8CUEP8M1SettingsBlock,
         processParameters = cms.vstring(
-            'SoftQCD:nonDiffractive = on', # Inclusive hard QCD
+            'HardQCD:all = on', #
+            'PhaseSpace:pTHatMin = 8.' #QCD jet production above some minimum pT
             'ParticleDecays:mixB = on', # B-mixing allowed
          ),  
         parameterSets = cms.vstring('pythia8CommonSettings',
@@ -38,8 +39,7 @@ generator = cms.EDFilter("Pythia8GeneratorFilter",
     annotation = cms.untracked.string('Spring 2015: Pythia8 generation enriched with b-bbar -> mumu, 13TeV, Tune CUEP8M1')
     )
 
-bFilter = cms.EDFilter(
-    "PythiaFilter",
+bFilter = cms.EDFilter("PythiaFilter",
     MaxEta = cms.untracked.double(9999.),
     MinEta = cms.untracked.double(-9999.),
     ParticleID = cms.untracked.int32(5)
