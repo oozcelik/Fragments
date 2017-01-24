@@ -27,7 +27,7 @@ generator = cms.EDFilter("Pythia8GeneratorFilter",
                          PythiaParameters = cms.PSet(pythia8CommonSettingsBlock,
                                                      pythia8CUEP8M1SettingsBlock,
                                                      ## check this (need extra parameters?)
-                                                     processParameters = cms.vstring("HardQCD:all = on"),
+                                                     processParameters = cms.vstring("SoftQCD:nonDiffractive = on"),
                                                      parameterSets = cms.vstring('pythia8CommonSettings',
                                                                                  'pythia8CUEP8M1Settings',
                                                                                  'processParameters',
@@ -78,7 +78,7 @@ decayfilter = cms.EDFilter(  # you may apply cuts on J/psi and K+ here.
     MaxEta          = cms.untracked.vdouble( 2.5,  2.5)
     )
 
-muFilter = cms.EDFilter("MCSingleParticleFilter", # you may apply cuts on additional muon/anti-muon
+muFilter = cms.EDFilter("MCSingleParticleFilter", # apply cuts on additional muon
     MaxEta = cms.untracked.double(2.5, 2.5),
     MinEta = cms.untracked.double(-2.5, -2.5),
     MaxPt = cms.untracked.double(9999., 9999.),
