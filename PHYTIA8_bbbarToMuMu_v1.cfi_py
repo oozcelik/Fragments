@@ -28,8 +28,8 @@ generator = cms.EDFilter("Pythia8GeneratorFilter",
                                     'pythia8CUEP8M1Settings',
                                     'processParameters'
                                     )
-        )
-                         )
+                  )
+         )
 
 
     configurationMetadata = cms.untracked.PSet(
