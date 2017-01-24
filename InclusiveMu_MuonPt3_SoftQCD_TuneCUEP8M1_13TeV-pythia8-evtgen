@@ -22,7 +22,10 @@ generator = cms.EDFilter(
     PythiaParameters = cms.PSet(
         pythia8CommonSettingsBlock,
         pythia8CUEP8M1SettingsBlock,
-        processParameters = cms.vstring("SoftQCD:nonDiffractive = on"),
+        processParameters = cms.vstring("HardQCD:all = on",
+                                       '321:onMode = on', #kaons
+                                       '211:onMode = on', #pion
+                                       '130:onMode = on' #KL0),
         parameterSets = cms.vstring(
             'pythia8CommonSettings',
             'pythia8CUEP8M1Settings',
