@@ -80,10 +80,9 @@ decayfilter = cms.EDFilter(  # you may apply cuts on J/psi and K+ here.
     MaxEta          = cms.untracked.vdouble( 2.5,  2.5)
     )
 
-muFilter = cms.EDFilter("PythiaFilter", # or PythiaFilter? apply cuts on additional muon
+muFilter = cms.EDFilter("PythiaFilter", # apply cuts on additional muon
     MaxEta = cms.untracked.double(2.5),
     MinEta = cms.untracked.double(-2.5),                        
-    MaxPt = cms.untracked.double(9999),
     MinPt = cms.untracked.double(1.),
     MotherID = cms.untracked.int32(0),
     ParticleID = cms.untracked.int32(13)
