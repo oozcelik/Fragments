@@ -88,4 +88,4 @@ muFilter = cms.EDFilter("PythiaFilter", # or PythiaFilter? apply cuts on additio
     ParticleID = cms.untracked.int32(13, -13)
     )
 
-ProductionFilterSequence = cms.Sequence(generator*bufilter*decayfilter*muFilter)
+ProductionFilterSequence = cms.Sequence(generator*bufilter*jpsifilter*decayfilter*muFilter)
