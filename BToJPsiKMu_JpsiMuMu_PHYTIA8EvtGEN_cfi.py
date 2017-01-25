@@ -72,9 +72,9 @@ jpsifilter = cms.EDFilter(
 decayfilter = cms.EDFilter(  # you may apply cuts on J/psi and K+ here.
     "PythiaDauVFilter",
     verbose         = cms.untracked.int32(1), 
-    NumberDaughters = cms.untracked.int32(3), 
+    NumberDaughters = cms.untracked.int32(2), 
     ParticleID      = cms.untracked.int32(521),  ## Bu  
-    DaughterIDs     = cms.untracked.vint32(443, 13), ## J/psi, K+
+    DaughterIDs     = cms.untracked.vint32(443, 321), ## J/psi, K+
     MinPt           = cms.untracked.vdouble(2., 2.),  
     MinEta          = cms.untracked.vdouble(-2.5, -2.5), 
     MaxEta          = cms.untracked.vdouble( 2.5,  2.5)
