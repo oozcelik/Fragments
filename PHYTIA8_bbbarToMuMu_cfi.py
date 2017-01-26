@@ -21,7 +21,7 @@ generator = cms.EDFilter("Pythia8GeneratorFilter",
         pythia8CommonSettingsBlock,
         pythia8CUEP8M1SettingsBlock,
         processParameters = cms.vstring(
-            'HardQCD:hardbbbar', #
+            'HardQCD:hardbbbar = on', #
             'ParticleDecays:mixB = on', # B-mixing allowed
          ),  
         parameterSets = cms.vstring('pythia8CommonSettings',
@@ -44,9 +44,8 @@ mumugenfilter = cms.EDFilter("MCParticlePairFilter",
     MinPt = cms.untracked.vdouble(3., 3.),
     MaxEta = cms.untracked.vdouble(3., 3.),
     MinEta = cms.untracked.vdouble(-3., -3.),
-    ParticleCharge = cms.untracked.int32(-1),
     ParticleID1 = cms.untracked.vint32(13),
-    ParticleID2 = cms.untracked.vint32(13)
+    ParticleID2 = cms.untracked.vint32(-13)
 )
 
 ProductionFilterSequence = cms.Sequence(generator*mumugenfilter)
