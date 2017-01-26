@@ -82,7 +82,7 @@ decayfilter = cms.EDFilter(  # you may apply cuts on J/psi and K+ here.
     )
 
 multiFilter = cms.EDFilter("MCMultiParticleFilter", # apply cuts on additional muon
-    Status = cms.vint32(1, 1, 1, 1),
+    Status = cms.vint32(1, 1, 1),
     src = cms.InputTag('generator'),
     ParticleID = cms.vint32(13, 13, 13),
     EtaMax = cms.untracked.double(3.),
