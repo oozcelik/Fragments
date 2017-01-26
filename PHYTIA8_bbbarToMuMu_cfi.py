@@ -1,6 +1,7 @@
 import FWCore.ParameterSet.Config as cms
 from Configuration.Generator.Pythia8CommonSettings_cfi import *
 from Configuration.Generator.Pythia8CUEP8M1Settings_cfi import *
+from GeneratorInterface.EvtGenInterface.EvtGenSetting_cff import *
 
 generator = cms.EDFilter("Pythia8GeneratorFilter",
                          pythiaPylistVerbosity = cms.untracked.int32(0),
@@ -31,8 +32,9 @@ generator = cms.EDFilter("Pythia8GeneratorFilter",
                   )
          )
 
+generator.PythiaParameters.processParameters.extend(EvtGenExtraParticles)
 
-    configurationMetadata = cms.untracked.PSet(
+configurationMetadata = cms.untracked.PSet(
     version = cms.untracked.string('$Revision: 1.1 $'),
     name = cms.untracked.string('$Source: Configuration/Generator/python/PHYTIA8_bbbarToMuMu_1.cff_py $'),
     annotation = cms.untracked.string('Spring 2015: Pythia8 generation enriched with b-bbar -> mumu, 13TeV, Tune CUEP8M1')
