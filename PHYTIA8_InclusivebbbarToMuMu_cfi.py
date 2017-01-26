@@ -22,9 +22,7 @@ generator = cms.EDFilter("Pythia8GeneratorFilter",
         pythia8CommonSettingsBlock,
         pythia8CUEP8M1SettingsBlock,
         processParameters = cms.vstring(
-            'SoftQCD:nonDiffractive = on',
-            'SoftQCD:singleDiffractive = on',
-            'SoftQCD:doubleDiffractive = on',
+            'SoftQCD:nonDiffractive = on',            
             'ParticleDecays:mixB = on', # B-mixing allowed
          ),  
         parameterSets = cms.vstring('pythia8CommonSettings',
