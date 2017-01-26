@@ -22,7 +22,7 @@ generator = cms.EDFilter("Pythia8GeneratorFilter",
         pythia8CommonSettingsBlock,
         pythia8CUEP8M1SettingsBlock,
         processParameters = cms.vstring(
-            'HardQCD:hardbbbar = on', #
+            'HardQCD:hardbbbar = on', # b-bbar decays
             'ParticleDecays:mixB = on', # B-mixing allowed
          ),  
         parameterSets = cms.vstring('pythia8CommonSettings',
