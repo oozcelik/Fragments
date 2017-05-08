@@ -14,18 +14,23 @@ generator = cms.EDFilter("Pythia8GeneratorFilter",
     
     ExternalDecays = cms.PSet(
         EvtGen130 = cms.untracked.PSet(
-            decay_table = cms.string('GeneratorInterface/EvtGenInterface/data/DECAY_2010_NOLONGLIFE.DEC'),
-            particle_property_file = cms.FileInPath('GeneratorInterface/EvtGenInterface/data/evt.pdl'), ##evtLbJpsipK.pdl
+            decay_table = cms.string('GeneratorInterface/EvtGenInterface/data/DECAY_2014_NOLONGLIFE.DEC'),
+            particle_property_file = cms.FileInPath('GeneratorInterface/EvtGenInterface/data/evtLbJpsipK.pdl'), ## which does not work!!
             user_decay_file = cms.vstring('GeneratorInterface/EvtGenInterface/data/LambdaB_JPsipK.dec'),
             list_forced_decays = cms.vstring('MyLambda_b0','Myanti-Lambda_b0'),
             operates_on_particles = cms.vint32(),
+            convertPythiaCodes = cms.untracked.bool(False)
             ),
         parameterSets = cms.vstring('EvtGen130')
         ),
                          
     PythiaParameters = cms.PSet(pythia8CommonSettingsBlock,
         pythia8CUEP8M1SettingsBlock,
-        processParameters = cms.vstring("SoftQCD:nonDiffractive = on"),
+        processParameters = cms.vstring('SoftQCD:nonDiffractive = on',
+                                        'PTFilter:filter = on', ### filtering on
+                                        'PTFilter:quarkToFilter = 5', ## filtering b
+                                        'PTFilter:scaleToFilter = 1.0', # filtering scale
+),
         parameterSets = cms.vstring('pythia8CommonSettings',
                                     'pythia8CUEP8M1Settings',
                                     'processParameters',
