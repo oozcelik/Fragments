@@ -159,7 +159,7 @@ Enddecay
 End
 	     """
 	     ),
-             list_forced_decays = cms.vstring() #notice we are actually replacing the decay table in order to have hadrons decaying to muons.
+             list_forced_decays = cms.vstring() #notice we are actually replacing the decay table to force hadrons decaying to muons.
         ),
         parameterSets = cms.vstring('EvtGen')
     ),
