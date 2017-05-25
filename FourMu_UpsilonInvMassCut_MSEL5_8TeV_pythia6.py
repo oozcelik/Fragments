@@ -11,8 +11,10 @@ generator = cms.EDFilter(
     pythiaPylistVerbosity = cms.untracked.int32(0),
     ExternalDecays = cms.PSet(
         EvtGen = cms.untracked.PSet(
-             operates_on_particles = cms.vint32(511,521,531,5122),
-             use_default_decay = cms.untracked.bool(False),
+             operates_on_particles = cms.vint32(511,521,531,5122), # you can put here the list of particles (PDG IDs)
+                                                                   # that you want decayed by EvtGen
+		                                                   # here is B0, B+/- , B_s0 and Lambda_b0 
+             use_default_decay = cms.untracked.bool(False),  # to generate a specific signal mode.
              decay_table = cms.FileInPath('GeneratorInterface/ExternalDecays/data/DECAY_NOLONGLIFE.DEC'),
              particle_property_file = cms.FileInPath('GeneratorInterface/ExternalDecays/data/evt.pdl'),
 	     user_decay_embedded= cms.vstring(
@@ -165,7 +167,7 @@ End
     ),
     PythiaParameters = cms.PSet(
     pythiaUESettingsBlock,
-        bbbarSettings = cms.vstring('MSEL = 5'),
+        bbbarSettings = cms.vstring('MSEL = 5'), # for b-bbar 
         parameterSets = cms.vstring(
              'pythiaUESettings',
              'bbbarSettings')
@@ -173,7 +175,7 @@ End
     )
     )
 
-FourMuonFilter = cms.EDFilter("FourLepFilter",
+FourMuonFilter = cms.EDFilter("FourLepFilter", # require 4-mu in the final state
     MinPt = cms.untracked.double(2.0),
     MaxPt = cms.untracked.double(4000.0),
     MaxEta = cms.untracked.double(2.5),
@@ -181,7 +183,7 @@ FourMuonFilter = cms.EDFilter("FourLepFilter",
     ParticleID = cms.untracked.int32(13)
 )
 
-TwoMuonFilter = cms.EDFilter("MCParticlePairFilter",
+TwoMuonFilter = cms.EDFilter("MCParticlePairFilter",  # require 2-mu mass to be 8.5 - 11.5 GeV
     Status = cms.untracked.vint32(1,1),
     MinPt = cms.untracked.vdouble(2.0,2.0),
     MaxPt = cms.untracked.vdouble(4000.0,4000.0),
