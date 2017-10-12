@@ -28,7 +28,7 @@ generator = cms.EDFilter("Pythia8GeneratorFilter",
              'Charmonium:gg2ccbar(3S1)[3PJ(8)]g = off,on',
              'Charmonium:qg2ccbar(3S1)[3PJ(8)]q = off,on',
              'Charmonium:qqbar2ccbar(3S1)[3PJ(8)]g = off,on',
-             'ParticleDecays:allowPhotonRadiation = off,on',  # Turn on/off QED FSR, see pythia8CommonSettings                                                        
+             'ParticleDecays:allowPhotonRadiation = off,on',  # Turn on/off QED FSR                                                        
              '20443:m0 = 4.140', # Chi_c1 assigned as Y(4140) 4.5060 
              '20443:mWidth = 0.092',
              '20443:mMin = 4.116', # 4.116 = m(J/psi) + m(phi)                                                                                                       
