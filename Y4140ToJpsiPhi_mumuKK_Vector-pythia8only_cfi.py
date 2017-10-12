@@ -15,13 +15,14 @@ generator = cms.EDFilter("Pythia8GeneratorFilter",
         pythia8CUEP8M1SettingsBlock,
         processParameters = cms.vstring(
              #'Charmonium:all = on',                       # Quarkonia, MSEL=61, including feed-down as well                                                          
-                 'Onia:all(3S1) = on',
+                 'Onia:all(3S1) = on', # e.g. J/psi and Upsilon
+		 'Onia:all(3PJ) = on', # e.g. chi_c and chi_b
                       #'Charmonium:states(3S1)'   (default = 443,20443; minimum = 0) # it looks like this line needs to match the following lines                    
-             'Charmonium:gg2ccbar(3S1)[3S1(1)]g = off,on',
-             'Charmonium:gg2ccbar(3S1)[3S1(8)]g = off,on',
-             'Charmonium:qg2ccbar(3S1)[3S1(8)]q = off,on',
-             'Charmonium:qqbar2ccbar(3S1)[3S1(8)]g = off,on',
-             'Charmonium:gg2ccbar(3S1)[1S0(8)]g = off,on',
+             'Charmonium:gg2ccbar(3S1)[3S1(1)]g = off,on', # color singlet gg → ccbar[3S1(1)] g
+             'Charmonium:gg2ccbar(3S1)[3S1(8)]g = off,on', # colour-octet  gg → ccbar[3S1(8)] g
+             'Charmonium:qg2ccbar(3S1)[3S1(8)]q = off,on', # Colour-octet production qg → ccbar[3S1(8)] q.
+             'Charmonium:qqbar2ccbar(3S1)[3S1(8)]g = off,on', # qqbar → ccbar[3S1(8)] g
+             'Charmonium:gg2ccbar(3S1)[1S0(8)]g = off,on', 
              'Charmonium:qg2ccbar(3S1)[1S0(8)]q = off,on',
              'Charmonium:qqbar2ccbar(3S1)[1S0(8)]g = off,on',
              'Charmonium:gg2ccbar(3S1)[3PJ(8)]g = off,on',
@@ -31,12 +32,12 @@ generator = cms.EDFilter("Pythia8GeneratorFilter",
              '20443:m0 = 4.140', # Chi_c1 assigned as Y(4140) 4.5060 
              '20443:mWidth = 0.092',
              '20443:mMin = 4.116', # 4.116 = m(J/psi) + m(phi)                                                                                                       
-             '20443:mMax = 5.886', # 4.568 = 4.506 +15*mWidth                                                                                                        
-             '20443:spinType = 0',
+             '20443:mMax = 5.886', # 4.568 = 4.506 +15*mWidth                                                                                                       
+             'StringFlav:mesonCL1S1J1 = 3.00000', #the relative pseudovector production ratio (L=1,S=1,J=1)/pseudoscalar for charm mesons
                       #'333:mMax = '                                                                                                                                  
                       #id:addChannel = onMode bRatio meMode products                                                                                                  
                       #meMode(): the mode of processing this channel, possibly with matrix-element information; 0 gives isotropic phase space.  
-                       '20443:addChannel = on 1 0 443 333',
+             '20443:addChannel = on 1 0 443 333',
              '20443:onMode = off',        # turn off Y(4500) decays inherited from Chi_c1                                                                          
              '20443:onIfMatch = 443 333', # just let Y(4500) -> J/psi phi                                                                                            
              '443:onMode = off',           # Turn off J/psi decays                                                                                                    
