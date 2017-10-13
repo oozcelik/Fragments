@@ -52,7 +52,7 @@ generator = cms.EDFilter("Pythia8GeneratorFilter",
 )
 
 
-#pythia.particleData.listChangedd() #To list only the data of the particles that have been changed                                                                    
+#####Filter efficiency is 7.6e-2 ######################
 
 motherFilter = cms.EDFilter(
     "PythiaFilter",
