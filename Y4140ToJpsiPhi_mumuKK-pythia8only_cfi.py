@@ -32,8 +32,7 @@ generator = cms.EDFilter("Pythia8GeneratorFilter",
              '100443:mWidth = 0.092',
              '100443:mMin = 4.116', # 4.116 = m(J/psi) + m(phi)                                                                                                       
              '100443:mMax = 5.886', # 4.568 = 4.506 +15*mWidth                                                                                                        
-             '100443:spinType = 0',
-                      #'333:mMax = '                                                                                                                                  
+             '100443:spinType = 0',                                                                                                                                                       
                       #id:addChannel = onMode bRatio meMode products                                                                                                  
                       #meMode(): the mode of processing this channel, possibly with matrix-element information; 0 gives isotropic phase space.  
                        '100443:addChannel = on 1 0 443 333',
