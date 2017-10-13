@@ -33,8 +33,7 @@ generator = cms.EDFilter("Pythia8GeneratorFilter",
              '20443:mWidth = 0.092',
              '20443:mMin = 4.116', # 4.116 = m(J/psi) + m(phi)                                                                                                       
              '20443:mMax = 5.886', # 4.568 = 4.506 +15*mWidth                                                                                                       
-             'StringFlav:mesonCL1S1J1 = 3.00000', #the relative pseudovector production ratio (L=1,S=1,J=1)/pseudoscalar for charm mesons
-                      #'333:mMax = '                                                                                                                                  
+             'StringFlav:mesonCL1S1J1 = 3.00000', #the relative pseudovector production ratio (L=1,S=1,J=1)/pseudoscalar for charm mesons                                                                                                                                                      
                       #id:addChannel = onMode bRatio meMode products                                                                                                  
                       #meMode(): the mode of processing this channel, possibly with matrix-element information; 0 gives isotropic phase space.  
              '20443:addChannel = on 1 0 443 333',
