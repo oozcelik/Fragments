@@ -91,13 +91,27 @@ psifilter = cms.EDFilter(
     MaxEta          = cms.untracked.vdouble( 2.5,  2.5)
     )
 
-phifilter = cms.EDFilter(
+phiToMuMufilter = cms.EDFilter(
     "PythiaDauVFilter",
     verbose         = cms.untracked.int32(4*1),
     NumberDaughters = cms.untracked.int32(2),
     MotherID        = cms.untracked.int32(100443),
     ParticleID      = cms.untracked.int32(333),
+    NumberDaughters = cms.untracked.int32(1),
     DaughterIDs     = cms.untracked.vint32(13, -13),
+    MinPt           = cms.untracked.vdouble(0.5, 0.5),
+    MinEta          = cms.untracked.vdouble(-2.5, -2.5),
+    MaxEta          = cms.untracked.vdouble( 2.5,  2.5)
+    )
+
+phiToKKfilter = cms.EDFilter(
+    "PythiaDauVFilter",
+    verbose         = cms.untracked.int32(4*1),
+    NumberDaughters = cms.untracked.int32(2),
+    MotherID        = cms.untracked.int32(100443),
+    ParticleID      = cms.untracked.int32(333),
+    NumberDaughters = cms.untracked.int32(1),
+    DaughterIDs     = cms.untracked.vint32(321, -321),
     MinPt           = cms.untracked.vdouble(0.5, 0.5),
     MinEta          = cms.untracked.vdouble(-2.5, -2.5),
     MaxEta          = cms.untracked.vdouble( 2.5,  2.5)
@@ -108,7 +122,8 @@ ProductionFilterSequence = cms.Sequence(generator
 					*motherFilter
 					*decayfilter
 					*psifilter
-					*phifilter
+					*phiToMuMufilter
+					*phiToKKfilter
 					)
           
 configurationMetadata = cms.untracked.PSet(
