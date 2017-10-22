@@ -21,10 +21,8 @@ generator = cms.EDFilter("Pythia8GeneratorFilter",
             """ 
 ################################################################################
 #
-Alias      myY4140      B_s0   ## Bs0 for scalar particle assumption.
+Alias      myY4140      psi(2S)   ## Bs0 for scalar particle assumption.
 Particle   myY4140      4.140 0.0
-Alias      myAnti-Y4140 anti-B_s0
-ChargeConj myY4140      myAnti-Y4140 
 #
 Alias      myJpsi J/psi
 ChargeConj myJpsi myJpsi
@@ -33,11 +31,11 @@ Alias      myPhi  phi
 ChargeConj myPhi  myPhi
 #
 Decay myY4140
-1.000      myJpsi myPhi SVV_HELAMP 1.0 0.0 1.0 0.0 1.0 0.0;
+1.000      myJpsi myPhi PHSP;
 Enddecay
 #
 Decay myAnti-Y4140
-1.000      myJpsi myPhi SVV_HELAMP 1.0 0.0 1.0 0.0 1.0 0.0;
+1.000      myJpsi myPhi PHSP;
 Enddecay
 #
 Decay myJpsi
@@ -68,14 +66,14 @@ yfilter = cms.EDFilter(
     "PythiaFilter", 
     MaxEta = cms.untracked.double(9999.),
     MinEta = cms.untracked.double(-9999.),
-    ParticleID = cms.untracked.int32(531) ## Bs0 as Y4140
+    ParticleID = cms.untracked.int32(100443) ## Bs0 as Y4140
     )
 
 decayfilter = cms.EDFilter(
     "PythiaDauVFilter",
     verbose         = cms.untracked.int32(4*3),
     NumberDaughters = cms.untracked.int32(2),
-    ParticleID      = cms.untracked.int32(531),
+    ParticleID      = cms.untracked.int32(100443),
     DaughterIDs     = cms.untracked.vint32(443, 333),
     MinPt           = cms.untracked.vdouble(-1.0, -1.0),
     MinEta          = cms.untracked.vdouble(-9999., -9999.),
@@ -86,7 +84,7 @@ jpsifilter = cms.EDFilter(
         "PythiaDauVFilter",
 	verbose         = cms.untracked.int32(4*1), 
 	NumberDaughters = cms.untracked.int32(2), 
-	MotherID        = cms.untracked.int32(531),  
+	MotherID        = cms.untracked.int32(100443),  
 	ParticleID      = cms.untracked.int32(443),  
         DaughterIDs     = cms.untracked.vint32(13, -13),
 	MinPt           = cms.untracked.vdouble(2.5, 2.5), 
@@ -98,7 +96,7 @@ phiToMuMufilter = cms.EDFilter(
     "PythiaDauVFilter",
     verbose         = cms.untracked.int32(4*1),
     NumberDaughters = cms.untracked.int32(2),
-    MotherID        = cms.untracked.int32(531),
+    MotherID        = cms.untracked.int32(100443),
     ParticleID      = cms.untracked.int32(333),
     NumberDaughters = cms.untracked.int32(1),
     DaughterIDs     = cms.untracked.vint32(321, -321),
@@ -111,7 +109,7 @@ phiToMuMufilter = cms.EDFilter(
     "PythiaDauVFilter",
     verbose         = cms.untracked.int32(4*1),
     NumberDaughters = cms.untracked.int32(2),
-    MotherID        = cms.untracked.int32(531),
+    MotherID        = cms.untracked.int32(100443),
     ParticleID      = cms.untracked.int32(333),
     NumberDaughters = cms.untracked.int32(1),
     DaughterIDs     = cms.untracked.vint32(13, -13),
