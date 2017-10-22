@@ -13,15 +13,14 @@ generator = cms.EDFilter("Pythia8GeneratorFilter",
         EvtGen130 = cms.untracked.PSet(
             decay_table = cms.string('GeneratorInterface/EvtGenInterface/data/DECAY_2014_NOLONGLIFE.DEC'),
             particle_property_file = cms.FileInPath('GeneratorInterface/EvtGenInterface/data/evt_2014.pdl'),
-            list_forced_decays = cms.vstring('myY4140',
-		                             'myAnti-Y4140'),
-	          operates_on_particles = cms.vint32(531),
+            list_forced_decays = cms.vstring('myY4140'),
+	    operates_on_particles = cms.vint32(100443), # we care just about our signal particles
             convertPythiaCodes = cms.untracked.bool(False),
             user_decay_embedded = cms.vstring(
             """ 
 ################################################################################
 #
-Alias      myY4140      psi(2S)   ## Bs0 for scalar particle assumption.
+Alias      myY4140      psi(2S)   ## Psi(2S) for scalar particle assumption.
 Particle   myY4140      4.140 0.0
 #
 Alias      myJpsi J/psi
@@ -66,7 +65,7 @@ yfilter = cms.EDFilter(
     "PythiaFilter", 
     MaxEta = cms.untracked.double(9999.),
     MinEta = cms.untracked.double(-9999.),
-    ParticleID = cms.untracked.int32(100443) ## Bs0 as Y4140
+    ParticleID = cms.untracked.int32(100443) ## Psi(2S) as Y4140
     )
 
 decayfilter = cms.EDFilter(
