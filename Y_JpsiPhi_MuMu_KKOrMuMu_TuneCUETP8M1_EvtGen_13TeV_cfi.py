@@ -68,7 +68,10 @@ End"""
             'ParticleDecays:allowPhotonRadiation = off,on',
 	    '100443:m0 = 4.5060',
 	    '100443:mWidth = 0.092',
-	    '100443:onMode = off'						 
+	    '100443:onMode = off',
+            '100443:mMin = 4.116', 
+            '100443:mMax = 5.886', 
+            '100443:spinType = 1', 
                                                                ),
                                  parameterSets = cms.vstring('pythia8CommonSettings',
                                                              'pythia8CUEP8M1Settings',
