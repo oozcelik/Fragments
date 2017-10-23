@@ -10,19 +10,8 @@ generator = cms.EDFilter("Pythia8GeneratorFilter",
     crossSection = cms.untracked.double(0.0),
     maxEventsToPrint = cms.untracked.int32(0),
     PythiaParameters = cms.PSet(
-        pythia8CommonSettings = cms.vstring('Main:timesAllowErrors = 10000', 
-            'Check:epTolErr = 0.01', 
-            'Beams:setProductionScalesFromLHEF = off', 
-            'SLHA:keepSM = on', 
-            'SLHA:minMassSM = 1000.', 
-            'ParticleDecays:limitTau0 = on', 
-            'ParticleDecays:tau0Max = 10', 
-            'ParticleDecays:allowPhotonRadiation = on'),
-        pythia8CUEP8M1Settings = cms.vstring('Tune:pp 14', 
-            'Tune:ee 7', 
-            'MultipartonInteractions:pT0Ref=2.4024', 
-            'MultipartonInteractions:ecmPow=0.25208', 
-            'MultipartonInteractions:expPow=1.6'),
+        pythia8CommonSettingsBlock,
+        pythia8CUEP8M1SettingsBlock,
         processParameters = cms.vstring('Onia:all(3S1) = on', 
             'Charmonium:gg2ccbar(3S1)[3S1(1)]g = off,on', 
             'Charmonium:gg2ccbar(3S1)[3S1(8)]g = off,on', 
@@ -91,27 +80,27 @@ psifilter = cms.EDFilter(
     MaxEta          = cms.untracked.vdouble( 2.5,  2.5)
     )
 
-phiToMuMufilter = cms.EDFilter(
+phipositivelegfilter = cms.EDFilter(
     "PythiaDauVFilter",
     verbose         = cms.untracked.int32(4*1),
     NumberDaughters = cms.untracked.int32(2),
     MotherID        = cms.untracked.int32(100443),
     ParticleID      = cms.untracked.int32(333),
     NumberDaughters = cms.untracked.int32(1),
-    DaughterIDs     = cms.untracked.vint32(13, -13),
+    DaughterIDs     = cms.untracked.vint32(321, 13), # either K or mu each time
     MinPt           = cms.untracked.vdouble(0.5, 0.5),
     MinEta          = cms.untracked.vdouble(-2.5, -2.5),
     MaxEta          = cms.untracked.vdouble( 2.5,  2.5)
     )
 
-phiToKKfilter = cms.EDFilter(
+phinegativelegfilter = cms.EDFilter(
     "PythiaDauVFilter",
     verbose         = cms.untracked.int32(4*1),
     NumberDaughters = cms.untracked.int32(2),
     MotherID        = cms.untracked.int32(100443),
     ParticleID      = cms.untracked.int32(333),
     NumberDaughters = cms.untracked.int32(1),
-    DaughterIDs     = cms.untracked.vint32(321, -321),
+    DaughterIDs     = cms.untracked.vint32(-321, -13), # either K or mu each time
     MinPt           = cms.untracked.vdouble(0.5, 0.5),
     MinEta          = cms.untracked.vdouble(-2.5, -2.5),
     MaxEta          = cms.untracked.vdouble( 2.5,  2.5)
@@ -122,8 +111,8 @@ ProductionFilterSequence = cms.Sequence(generator
 					*motherFilter
 					*decayfilter
 					*psifilter
-					*phiToMuMufilter
-					*phiToKKfilter
+					*phipositivelegfilter
+					*phinegativelegfilter
 					)
           
 configurationMetadata = cms.untracked.PSet(
