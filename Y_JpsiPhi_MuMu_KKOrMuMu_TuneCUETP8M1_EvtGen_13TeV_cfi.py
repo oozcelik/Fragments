@@ -20,7 +20,7 @@ generator = cms.EDFilter("Pythia8GeneratorFilter",
             """ 
 ################################################################################
 #
-Alias      myY4140      psi(2S)   ## Psi(2S) for scalar particle assumption.
+Alias      myY4140      psi(2S)   ## Psi(2S) as Y(4140).
 Particle   myY4140      4.140 0.092
 #
 Alias      myJpsi J/psi
@@ -54,7 +54,7 @@ End"""
   ),
      PythiaParameters = cms.PSet(pythia8CommonSettingsBlock,
                                  pythia8CUEP8M1SettingsBlock,
-                                 processParameters = cms.vstring('Onia:all(3S1) = on', 
+                                 processParameters = cms.vstring('Onia:all(3S1) = on', # for prompt production 
             'Charmonium:gg2ccbar(3S1)[3S1(1)]g = off,on', 
             'Charmonium:gg2ccbar(3S1)[3S1(8)]g = off,on', 
             'Charmonium:qg2ccbar(3S1)[3S1(8)]q = off,on', 
@@ -110,27 +110,27 @@ jpsifilter = cms.EDFilter(
 	MaxEta          = cms.untracked.vdouble( 2.5,  2.5)
     )
  
-phiToMuMufilter = cms.EDFilter(
+phipositivelegfilter = cms.EDFilter(
     "PythiaDauVFilter",
     verbose         = cms.untracked.int32(4*1),
     NumberDaughters = cms.untracked.int32(2),
     MotherID        = cms.untracked.int32(100443),
     ParticleID      = cms.untracked.int32(333),
-    NumberDaughters = cms.untracked.int32(1),
-    DaughterIDs     = cms.untracked.vint32(321, -321),
+    NumberDaughters = cms.untracked.int32(1), # either K or mu each time
+    DaughterIDs     = cms.untracked.vint32(321, 13),
     MinPt           = cms.untracked.vdouble(-1.0, -1.0),
     MinEta          = cms.untracked.vdouble(-9999, -9999),
     MaxEta          = cms.untracked.vdouble( 9999,  9999)
     )
     
- phiToMuMufilter = cms.EDFilter(
+ phinegativelegfilter = cms.EDFilter(
     "PythiaDauVFilter",
     verbose         = cms.untracked.int32(4*1),
     NumberDaughters = cms.untracked.int32(2),
     MotherID        = cms.untracked.int32(100443),
     ParticleID      = cms.untracked.int32(333),
     NumberDaughters = cms.untracked.int32(1),
-    DaughterIDs     = cms.untracked.vint32(13, -13),
+    DaughterIDs     = cms.untracked.vint32(-321, -13), # either K or mu each time
     MinPt           = cms.untracked.vdouble(-1.0, -1.0),
     MinEta          = cms.untracked.vdouble(-9999, -9999),
     MaxEta          = cms.untracked.vdouble( 9999,  9999)
@@ -141,6 +141,6 @@ ProductionFilterSequence = cms.Sequence(generator
                                         *yfilter
                                         *decayfilter
                                         *jpsifilter
-                                        *phiToMuMufilter
-                                        *phiToKKfilter
+                                        *phipositivelegfilter
+                                        *phinegativelegfilter
                                         )                       
