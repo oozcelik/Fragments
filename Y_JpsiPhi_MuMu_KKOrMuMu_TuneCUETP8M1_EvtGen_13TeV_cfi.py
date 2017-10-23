@@ -21,7 +21,7 @@ generator = cms.EDFilter("Pythia8GeneratorFilter",
 ################################################################################
 #
 Alias      myY4140      psi(2S)   ## Psi(2S) for scalar particle assumption.
-Particle   myY4140      4.140 0.0
+Particle   myY4140      4.140 0.092
 #
 Alias      myJpsi J/psi
 ChargeConj myJpsi myJpsi
@@ -41,6 +41,11 @@ Decay myJpsi
 1.000      mu+    mu-   PHOTOS VLL;
 Enddecay
 #
+Decay MyPhi
+0.5   K+ K- VSS;
+0.5   mu+ mu- PHOTOS VLL;
+Enddecay
+#
 End"""
         )
     
@@ -49,8 +54,22 @@ End"""
   ),
      PythiaParameters = cms.PSet(pythia8CommonSettingsBlock,
                                  pythia8CUEP8M1SettingsBlock,
-                                 processParameters = cms.vstring('SoftQCD:nonDiffractive = on'
-                                                                 ),
+                                 processParameters = cms.vstring('Onia:all(3S1) = on', 
+            'Charmonium:gg2ccbar(3S1)[3S1(1)]g = off,on', 
+            'Charmonium:gg2ccbar(3S1)[3S1(8)]g = off,on', 
+            'Charmonium:qg2ccbar(3S1)[3S1(8)]q = off,on', 
+            'Charmonium:qqbar2ccbar(3S1)[3S1(8)]g = off,on', 
+            'Charmonium:gg2ccbar(3S1)[1S0(8)]g = off,on', 
+            'Charmonium:qg2ccbar(3S1)[1S0(8)]q = off,on', 
+            'Charmonium:qqbar2ccbar(3S1)[1S0(8)]g = off,on', 
+            'Charmonium:gg2ccbar(3S1)[3PJ(8)]g = off,on', 
+            'Charmonium:qg2ccbar(3S1)[3PJ(8)]q = off,on', 
+            'Charmonium:qqbar2ccbar(3S1)[3PJ(8)]g = off,on', 
+            'ParticleDecays:allowPhotonRadiation = off,on',
+	    '100443:m0 = 4.5060',
+	    '100443:mWidth = 0.092',
+	    '100443= off'						 
+                                                               ),
                                  parameterSets = cms.vstring('pythia8CommonSettings',
                                                              'pythia8CUEP8M1Settings',
                                                              'processParameters',
