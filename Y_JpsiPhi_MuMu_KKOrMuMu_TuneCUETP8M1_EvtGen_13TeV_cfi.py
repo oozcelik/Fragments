@@ -68,7 +68,7 @@ End"""
             'ParticleDecays:allowPhotonRadiation = off,on',
 	    '100443:m0 = 4.5060',
 	    '100443:mWidth = 0.092',
-	    '100443= off'						 
+	    '100443:onMode = off'						 
                                                                ),
                                  parameterSets = cms.vstring('pythia8CommonSettings',
                                                              'pythia8CUEP8M1Settings',
@@ -117,7 +117,7 @@ phipositivelegfilter = cms.EDFilter(
     MotherID        = cms.untracked.int32(100443),
     ParticleID      = cms.untracked.int32(333),
     NumberDaughters = cms.untracked.int32(1), # either K or mu each time
-    DaughterIDs     = cms.untracked.vint32(321, 13),
+    DaughterIDs     = cms.untracked.vint32(321, 13), 
     MinPt           = cms.untracked.vdouble(-1.0, -1.0),
     MinEta          = cms.untracked.vdouble(-9999, -9999),
     MaxEta          = cms.untracked.vdouble( 9999,  9999)
