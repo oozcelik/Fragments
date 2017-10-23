@@ -115,8 +115,7 @@ jpsifilter = cms.EDFilter(
  
 phipositivelegfilter = cms.EDFilter(
     "PythiaDauVFilter",
-    verbose         = cms.untracked.int32(4*1),
-    NumberDaughters = cms.untracked.int32(2),
+    verbose         = cms.untracked.int32(4*1),    
     MotherID        = cms.untracked.int32(100443),
     ParticleID      = cms.untracked.int32(333),
     NumberDaughters = cms.untracked.int32(1), # either K or mu each time
@@ -128,8 +127,7 @@ phipositivelegfilter = cms.EDFilter(
     
  phinegativelegfilter = cms.EDFilter(
     "PythiaDauVFilter",
-    verbose         = cms.untracked.int32(4*1),
-    NumberDaughters = cms.untracked.int32(2),
+    verbose         = cms.untracked.int32(4*1),    
     MotherID        = cms.untracked.int32(100443),
     ParticleID      = cms.untracked.int32(333),
     NumberDaughters = cms.untracked.int32(1),
