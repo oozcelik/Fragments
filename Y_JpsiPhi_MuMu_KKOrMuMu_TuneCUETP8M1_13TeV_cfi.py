@@ -15,9 +15,6 @@ generator = cms.EDFilter("Pythia8GeneratorFilter",
         pythia8CommonSettingsBlock,
         pythia8CUEP8M1SettingsBlock,
         processParameters = cms.vstring(
-            'PTFilter:filter = on', ### filtering on
-            'PTFilter:quarkToFilter = 5', ## filtering b
-            'PTFilter:scaleToFilter = 1.0', # filtering scale
             'Charmonium:states(3PJ) = 20443', # generating only Chi_c1 particle
             'Charmonium:O(3PJ)[3P0(1)] = 0.05', # The color-singlet long-distance matrix elements
             'Charmonium:O(3PJ)[3S1(8)] = 0.0031', # The color-singlet long-distance matrix elements
@@ -38,7 +35,10 @@ generator = cms.EDFilter("Pythia8GeneratorFilter",
             '443:onMode = off',
             '443:onIfMatch = 13 -13',
             '333:onMode = off',
-            '333:onIfMatch = 321 -321',
+            '333:0:onMode = on', # channel_0 = 321 -321
+            '333:0:bRatio = 0.5',
+            '333:9:onMode = on', # channel_9 = 13 -13
+            '333:9:bRatio = 0.5',
             ),
 parameterSets = cms.vstring('pythia8CommonSettings',
                                  'pythia8CUEP8M1Settings',
