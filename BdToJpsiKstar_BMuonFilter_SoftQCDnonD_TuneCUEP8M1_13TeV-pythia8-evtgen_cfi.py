@@ -58,29 +58,5 @@ bfilter = cms.EDFilter(
     ParticleID = cms.untracked.int32(511)  ## Bd
     )
 
-jpsifilter = cms.EDFilter(
-    "PythiaDauVFilter",
-    verbose         = cms.untracked.int32(1), 
-    NumberDaughters = cms.untracked.int32(2), 
-    MotherID        = cms.untracked.int32(511),  
-    ParticleID      = cms.untracked.int32(443), ## JPsi 
-    DaughterIDs     = cms.untracked.vint32(13, -13), 
-    MinPt           = cms.untracked.vdouble(-1., -1.), 
-    MinEta          = cms.untracked.vdouble(-2.5, -2.5), 
-    MaxEta          = cms.untracked.vdouble( 2.5,  2.5)
-    )
 
-kstarfilter = cms.EDFilter(
-    "PythiaDauVFilter",
-    verbose         = cms.untracked.int32(1), 
-    NumberDaughters = cms.untracked.int32(2), 
-    MotherID        = cms.untracked.int32(511),  ## Bd
-    ParticleID      = cms.untracked.int32(313),  ## K*^0(892)
-    DaughterIDs     = cms.untracked.vint32(321, -211),  ## K+, pi-
-    MinPt           = cms.untracked.vdouble(0.4, 0.4), 
-    MinEta          = cms.untracked.vdouble(-2.5, -2.5), 
-    MaxEta          = cms.untracked.vdouble( 2.5,  2.5)
-    )
-
-
-ProductionFilterSequence = cms.Sequence(generator*bfilter*jpsifilter*kstarfilter)
+ProductionFilterSequence = cms.Sequence(generator*bfilter)
