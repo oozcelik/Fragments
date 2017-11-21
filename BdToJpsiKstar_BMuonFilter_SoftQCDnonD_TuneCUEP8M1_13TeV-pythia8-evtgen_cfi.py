@@ -65,7 +65,7 @@ jpsifilter = cms.EDFilter(
     MotherID        = cms.untracked.int32(511),  
     ParticleID      = cms.untracked.int32(443), ## JPsi 
     DaughterIDs     = cms.untracked.vint32(13, -13), 
-    MinPt           = cms.untracked.vdouble(2.5, 2.5), 
+    MinPt           = cms.untracked.vdouble(-1., -1.), 
     MinEta          = cms.untracked.vdouble(-2.5, -2.5), 
     MaxEta          = cms.untracked.vdouble( 2.5,  2.5)
     )
