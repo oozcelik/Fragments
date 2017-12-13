@@ -79,7 +79,7 @@ decayfilter = cms.EDFilter(  # you may apply cuts on J/psi and K+ here.
     )
 
 multiFilter = cms.EDFilter("MCMultiParticleFilter",
-            src = cms.InputTag('generator'),   
+            src = cms.untracked.InputTag("generator", "unsmeared"),   
             Status = cms.vint32(1),
             ParticleID = cms.vint32(13),
             PtMin = cms.vdouble(2.),
