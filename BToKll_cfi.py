@@ -19,12 +19,12 @@ generator = cms.EDFilter("Pythia8GeneratorFilter",
             Decay B+
             0.000000550 K+      e+      e-     PHOTOS BTOSLLBALL; #[Reconstructed PDG2011];
             0.000000520 K+      mu+     mu-    PHOTOS BTOSLLBALL; #[Reconstructed PDG2011];
-            Enddecay             
+            Enddecay   
+            CDecay B-
             """
-            list_forced_decays = cms.vstring('MyB+',
-                                             'Myanti-B+'),
+            list_forced_decays = cms.vstring(),
             ),
-        operates_on_particles = cms.vint32(),
+        operates_on_particles = cms.vint32('521'),
         parameterSets = cms.vstring('EvtGen130')
         ),
                          
