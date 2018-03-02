@@ -15,7 +15,6 @@ generator = cms.EDFilter("Pythia8GeneratorFilter",
         EvtGen130 = cms.untracked.PSet(
             decay_table = cms.string('GeneratorInterface/EvtGenInterface/data/DECAY_2014_NOLONGLIFE.DEC'),
             particle_property_file = cms.FileInPath('GeneratorInterface/ExternalDecays/data/evt_2014.pdl'),
-           # user_decay_file = cms.vstring('GeneratorInterface/ExternalDecays/data/Bs_JpsiPhi_V3.dec'),
             user_decay_embedded= cms.vstring("""
             Decay B+
             0.000000550 K+      e+      e-     PHOTOS BTOSLLBALL; #[Reconstructed PDG2011];
@@ -46,13 +45,6 @@ generator = cms.EDFilter("Pythia8GeneratorFilter",
                          )
 
 generator.PythiaParameters.processParameters.extend(EvtGenExtraParticles)
-
-configurationMetadata = cms.untracked.PSet(
-    version = cms.untracked.string('$Revision: 1.1 $'),
-    name = cms.untracked.string('$Source: Configuration/Generator/python/PYTHIA8_BsJpsiPhi_EtaPtFilter_CUEP8M1_13TeV_cff.py $'),
-    annotation = cms.untracked.string('Spring 2015: Pythia8+EvtGen130 generation of Bs --> J/psi phi, 13TeV, Tune CUETP8M1')
-    )
-
 
 bfilter = cms.EDFilter(
     "PythiaFilter",
