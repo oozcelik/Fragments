@@ -41,35 +41,37 @@ generator = cms.EDFilter("Pythia8GeneratorFilter",
 
 generator.PythiaParameters.processParameters.extend(EvtGenExtraParticles)
 
-bfilter = cms.EDFilter(
-    "PythiaFilter",
+###########
+# Filters #
+###########
+# Filter only pp events which produce a B+:
+                         
+bufilter = cms.EDFilter(
+    "PythiaFilter", 
     MaxEta = cms.untracked.double(9999.),
     MinEta = cms.untracked.double(-9999.),
-    ParticleID = cms.untracked.int32(531)
+    ParticleID = cms.untracked.int32(521) ## Bu
     )
 
-jpsifilter = cms.EDFilter(
+
+decayfilterpositiveleg = cms.EDFilter(
     "PythiaDauVFilter",
     verbose         = cms.untracked.int32(1), 
     NumberDaughters = cms.untracked.int32(2), 
-    MotherID        = cms.untracked.int32(531),  
-    ParticleID      = cms.untracked.int32(443),  
-    DaughterIDs     = cms.untracked.vint32(13, -13),
-    MinPt           = cms.untracked.vdouble(2.5, 2.5), 
-    MinEta          = cms.untracked.vdouble(-2.5, -2.5), 
-    MaxEta          = cms.untracked.vdouble( 2.5,  2.5)
+    ParticleID      = cms.untracked.int32(521),  ## Bu  
+    DaughterIDs     = cms.untracked.vint32(321, 13, 11), ## K+ and either mu- or e-
+    MinPt           = cms.untracked.vdouble(-1., -1., -1.),  
+    MinEta          = cms.untracked.vdouble(-9999., -9999., -9999.), 
+    MaxEta          = cms.untracked.vdouble( 9999.,  9999.,  9999.)
     )
 
-phifilter = cms.EDFilter(
+decayfilterpositiveleg = cms.EDFilter(
     "PythiaDauVFilter",
     verbose         = cms.untracked.int32(1), 
     NumberDaughters = cms.untracked.int32(2), 
-    MotherID        = cms.untracked.int32(531),  
-    ParticleID      = cms.untracked.int32(333),  
-    DaughterIDs     = cms.untracked.vint32(321, -321),
-    MinPt           = cms.untracked.vdouble(0.4, 0.4), 
-    MinEta          = cms.untracked.vdouble(-2.5, -2.5), 
-    MaxEta          = cms.untracked.vdouble( 2.5,  2.5)
+    ParticleID      = cms.untracked.int32(521),  ## Bu  
+    DaughterIDs     = cms.untracked.vint32(321, -13, -11), ## K+ and either mu+ or e+
+    MinPt           = cms.untracked.vdouble(-1., -1., -1.),  
+    MinEta          = cms.untracked.vdouble(-9999., -9999., -9999.), 
+    MaxEta          = cms.untracked.vdouble( 9999.,  9999.,  9999.)
     )
-
-ProductionFilterSequence = cms.Sequence(generator*bfilter*jpsifilter*phifilter)
