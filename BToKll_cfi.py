@@ -17,17 +17,12 @@ generator = cms.EDFilter("Pythia8GeneratorFilter",
             particle_property_file = cms.FileInPath('GeneratorInterface/ExternalDecays/data/evt_2014.pdl'),
             user_decay_embedded= cms.vstring("""
             Decay B+
-            0.000000550 K+      e+      e-     PHOTOS BTOSLLBALL; #[Reconstructed PDG2011];
-            0.000000520 K+      mu+     mu-    PHOTOS BTOSLLBALL; #[Reconstructed PDG2011];
-            0.0000001   K+      tau+    tau-   PHOTOS BTOSLLBALL;
-            Enddecay
-            #
-            Decay 
-            
-
+            0.5 K+      e+      e-     PHOTOS BTOSLLBALL; #[Reconstructed PDG2011];
+            0.5 K+      mu+     mu-    PHOTOS BTOSLLBALL; #[Reconstructed PDG2011];
+            Enddecay             
             """
-            list_forced_decays = cms.vstring('MyB_s0',
-                                             'Myanti-B_s0'),
+            list_forced_decays = cms.vstring('MyB+',
+                                             'Myanti-B+'),
             ),
         operates_on_particles = cms.vint32(),
         parameterSets = cms.vstring('EvtGen130')
