@@ -61,9 +61,9 @@ decayfilterpositiveleg = cms.EDFilter(
     NumberDaughters = cms.untracked.int32(2), 
     ParticleID      = cms.untracked.int32(521),  ## Bu  
     DaughterIDs     = cms.untracked.vint32(321, 13, 11), ## K+ and either mu- or e-
-    MinPt           = cms.untracked.vdouble(-1., 7., -1.),  
-    MinEta          = cms.untracked.vdouble(-9999., -2.5, -9999.), 
-    MaxEta          = cms.untracked.vdouble( 9999.,  2.5,  9999.)
+    MinPt           = cms.untracked.vdouble(-1., -1., -1.),  
+    MinEta          = cms.untracked.vdouble(-9999., -9999., -9999.), 
+    MaxEta          = cms.untracked.vdouble( 9999.,  9999.,  9999.)
     )
 
 decayfilternegativeleg = cms.EDFilter(
@@ -75,8 +75,13 @@ decayfilternegativeleg = cms.EDFilter(
     MinPt           = cms.untracked.vdouble(-1., -1., -1.),  
     MinEta          = cms.untracked.vdouble(-9999., -9999., -9999.), 
     MaxEta          = cms.untracked.vdouble( 9999.,  9999.,  9999.)
-    )
-                         
- ProductionFilterSequence = cms.Sequence(generator*bufilter*decayfilterpositiveleg*decayfilternegativeleg) 
-
-                        
+)
+ muFilter = cms.EDFilter("MCSmartSingleParticleFilter",
+     MinPt = cms.untracked.vdouble(7.0, 7.0),
+     MinEta = cms.untracked.vdouble(-2.5,-2.5),
+     MaxEta = cms.untracked.vdouble(2.5,2.5),
+     ParticleID = cms.untracked.vint32(13,-13),
+     Status = cms.untracked.vint32(1,1),                        
+ )                      
+                      
+ ProductionFilterSequence = cms.Sequence(generator*bufilter*decayfilterpositiveleg*decayfilternegativeleg*muFilter)                         
