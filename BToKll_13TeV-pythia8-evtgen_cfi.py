@@ -61,12 +61,12 @@ decayfilterpositiveleg = cms.EDFilter(
     NumberDaughters = cms.untracked.int32(2), 
     ParticleID      = cms.untracked.int32(521),  ## Bu  
     DaughterIDs     = cms.untracked.vint32(321, 13, 11), ## K+ and either mu- or e-
-    MinPt           = cms.untracked.vdouble(-1., -1., -1.),  
-    MinEta          = cms.untracked.vdouble(-9999., -9999., -9999.), 
-    MaxEta          = cms.untracked.vdouble( 9999.,  9999.,  9999.)
+    MinPt           = cms.untracked.vdouble(-1., 7., -1.),  
+    MinEta          = cms.untracked.vdouble(-9999., -2.5, -9999.), 
+    MaxEta          = cms.untracked.vdouble( 9999.,  2.5,  9999.)
     )
 
-decayfilterpositiveleg = cms.EDFilter(
+decayfilternegativeleg = cms.EDFilter(
     "PythiaDauVFilter",
     verbose         = cms.untracked.int32(1), 
     NumberDaughters = cms.untracked.int32(2), 
@@ -77,6 +77,6 @@ decayfilterpositiveleg = cms.EDFilter(
     MaxEta          = cms.untracked.vdouble( 9999.,  9999.,  9999.)
     )
                          
- ProductionFilterSequence = cms.Sequence(generator*bufilter*decayfilterpositiveleg*decayfilterpositiveleg) 
+ ProductionFilterSequence = cms.Sequence(generator*bufilter*decayfilterpositiveleg*decayfilternegativeleg) 
 
                         
