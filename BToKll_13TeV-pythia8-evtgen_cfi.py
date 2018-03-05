@@ -76,3 +76,7 @@ decayfilterpositiveleg = cms.EDFilter(
     MinEta          = cms.untracked.vdouble(-9999., -9999., -9999.), 
     MaxEta          = cms.untracked.vdouble( 9999.,  9999.,  9999.)
     )
+                         
+ ProductionFilterSequence = cms.Sequence(generator*bufilter*decayfilterpositiveleg*decayfilterpositiveleg) 
+
+                        
