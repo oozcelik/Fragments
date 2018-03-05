@@ -54,7 +54,6 @@ bufilter = cms.EDFilter(
     ParticleID = cms.untracked.int32(521) ## Bu
     )
 
-
 decayfilterpositiveleg = cms.EDFilter(
     "PythiaDauVFilter",
     verbose         = cms.untracked.int32(1), 
@@ -66,22 +65,11 @@ decayfilterpositiveleg = cms.EDFilter(
     MaxEta          = cms.untracked.vdouble( 9999.,  9999.,  9999.)
     )
 
-decayfilternegativeleg = cms.EDFilter(
-    "PythiaDauVFilter",
-    verbose         = cms.untracked.int32(1), 
-    NumberDaughters = cms.untracked.int32(2), 
-    ParticleID      = cms.untracked.int32(521),  ## Bu  
-    DaughterIDs     = cms.untracked.vint32(321, -13, -11), ## K+ and either mu+ or e+
-    MinPt           = cms.untracked.vdouble(-1., -1., -1.),  
-    MinEta          = cms.untracked.vdouble(-9999., -9999., -9999.), 
-    MaxEta          = cms.untracked.vdouble( 9999.,  9999.,  9999.)
+process.mufilter = cms.EDFilter("PythiaFilter",  # bachelor muon with kinematic cuts.
+    MaxEta = cms.untracked.double(2.5),
+    MinEta = cms.untracked.double(-2.5),
+    MinPt = cms.untracked.double(7.),
+    ParticleID = cms.untracked.int32(13),
 )
-muFilter = cms.EDFilter("MCSmartSingleParticleFilter",
-            moduleLabel = cms.untracked.InputTag("generator", "unsmeared"),   
-            Status = cms.vint32(1),
-            ParticleID = cms.vint32(13),
-            MinPt = cms.vdouble(7.),
-            MinEta = cms.vdouble(-2.5),
-            MaxEta = cms.vdouble(2.5),
-            )                      
- ProductionFilterSequence = cms.Sequence(generator*bufilter*decayfilterpositiveleg*decayfilternegativeleg*muFilter)                         
+                 
+ ProductionFilterSequence = cms.Sequence(generator*bufilter*decayfilterpositiveleg*muFilter)                         
