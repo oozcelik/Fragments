@@ -2,6 +2,7 @@ import FWCore.ParameterSet.Config as cms
 
 from Configuration.Generator.Pythia8CommonSettings_cfi import *
 from Configuration.Generator.Pythia8CUEP8M1Settings_cfi import *
+from GeneratorInterface.EvtGenInterface.EvtGenSetting_cff import *
 
 generator = cms.EDFilter("Pythia8GeneratorFilter",
                          pythiaHepMCVerbosity = cms.untracked.bool(False),
