@@ -1,8 +1,7 @@
 import FWCore.ParameterSet.Config as cms
 
 from Configuration.Generator.Pythia8CommonSettings_cfi import *
-from Configuration.Generator.Pythia8CUEP8M1Settings_cfi import *
-from GeneratorInterface.EvtGenInterface.EvtGenSetting_cff import *
+from Configuration.Generator.MCTunes2017.PythiaCP5Settings_cfi import *
 
 generator = cms.EDFilter("Pythia8GeneratorFilter",
                          pythiaHepMCVerbosity = cms.untracked.bool(False),
@@ -15,7 +14,7 @@ generator = cms.EDFilter("Pythia8GeneratorFilter",
                          ExternalDecays = cms.PSet(
         EvtGen130 = cms.untracked.PSet(
             decay_table = cms.string('GeneratorInterface/EvtGenInterface/data/DECAY_2014_NOLONGLIFE.DEC'),
-            particle_property_file = cms.FileInPath('GeneratorInterface/ExternalDecays/data/evt_2014.pdl'),
+            particle_property_file = cms.FileInPath('GeneratorInterface/EvtGenInterface/data/evt_2014.pdl'),
             user_decay_embedded= cms.vstring("""
             Decay B+
             0.000000550 K+      e+      e-     PHOTOS BTOSLLBALL; #[Reconstructed PDG2011];
@@ -30,17 +29,15 @@ generator = cms.EDFilter("Pythia8GeneratorFilter",
         ),
                          
                          PythiaParameters = cms.PSet(pythia8CommonSettingsBlock,
-                                                     pythia8CUEP8M1SettingsBlock,
+                                                     pythia8CP5SettingsBlock,
                                                      processParameters = cms.vstring('SoftQCD:nonDiffractive = on'                                                                                   
                                                                                     ),
                                                      parameterSets = cms.vstring('pythia8CommonSettings',
-                                                                                 'pythia8CUEP8M1Settings',
+                                                                                 'pythia8CP5Settings',
                                                                                  'processParameters',
                                                                                  )
                                                      )
                          )
-
-generator.PythiaParameters.processParameters.extend(EvtGenExtraParticles)
 
 ###########
 # Filters #
