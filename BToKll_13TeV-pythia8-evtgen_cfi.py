@@ -77,7 +77,7 @@ decayfilternegativeleg = cms.EDFilter(
     MaxEta          = cms.untracked.vdouble( 9999.,  9999.,  9999.)
 )
 muFilter = cms.EDFilter("MCSmartSingleParticleFilter",
-            src = cms.untracked.InputTag("generator", "unsmeared"),   
+            moduleLabel = cms.untracked.InputTag("generator", "unsmeared"),   
             Status = cms.vint32(1),
             ParticleID = cms.vint32(13),
             MinPt = cms.vdouble(7.),
