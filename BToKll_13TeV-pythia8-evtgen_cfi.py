@@ -16,7 +16,7 @@ generator = cms.EDFilter("Pythia8GeneratorFilter",
             convertPythiaCodes = cms.untracked.bool(False),
             user_decay_embedded= cms.vstring(
 """
-Decay myB+
+Decay B+
 0.000000550 K+      e+      e-     PHOTOS BTOSLLBALL;
 0.000000520 K+      mu+     mu-    PHOTOS BTOSLLBALL;
 Enddecay
