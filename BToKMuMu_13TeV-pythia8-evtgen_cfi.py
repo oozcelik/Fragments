@@ -55,7 +55,7 @@ decayfilter = cms.EDFilter(
     MaxEta          = cms.untracked.vdouble( 9999.,  9999.,  9999.)
 )
     
-multiFilter = cms.EDFilter("MCMultiParticleFilter",
+muFilter = cms.EDFilter("MCMultiParticleFilter",
             src = cms.untracked.InputTag("generator", "unsmeared"),   
             Status = cms.vint32(1),
             ParticleID = cms.vint32(13),
