@@ -59,9 +59,9 @@ muFilter = cms.EDFilter("MCMultiParticleFilter",
             src = cms.untracked.InputTag("generator", "unsmeared"),   
             Status = cms.vint32(1),
             ParticleID = cms.vint32(13),
-            PtMin = cms.vdouble(-1.),
+            PtMin = cms.vdouble(0.),
             NumRequired = cms.int32(3),
-            EtaMax = cms.vdouble(-1.),
+            EtaMax = cms.vdouble(999.),
             AcceptMore = cms.bool(True)
             )
 
