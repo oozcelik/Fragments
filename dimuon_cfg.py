@@ -16,9 +16,8 @@ generator = cms.EDFilter("Pythia8GeneratorFilter",
             convertPythiaCodes = cms.untracked.bool(False),
             user_decay_file = cms.vstring(''),
             parameterSets = cms.vstring('EvtGen130')
-        ),
-
-                         PythiaParameters = cms.PSet(pythia8CommonSettingsBlock,
+        ),        
+        PythiaParameters = cms.PSet(pythia8CommonSettingsBlock,
                                                      pythia8CP5SettingsBlock,
                                                      processParameters = cms.vstring("SoftQCD:nonDiffractive = on",
                                                                                      'PTFilter:filter = on', # this turn on the filter                                                                                
