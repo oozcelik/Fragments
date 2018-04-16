@@ -31,7 +31,29 @@ generator = cms.EDFilter("Pythia8GeneratorFilter",
                          )
 
 ### Filters ####
-
+                         
+bfilter = cms.EDFilter("PythiaFilter",
+                       ParticleID = cms.untracked.int32(5)
+)
+                         
+muFilter = cms.EDFilter("MCSmartSingleParticleFilter",
+                           MinPt = cms.untracked.vdouble(2.0,2.0),
+                           MinEta = cms.untracked.vdouble(-3.0,-3.0),
+                           MaxEta = cms.untracked.vdouble(3.0,3.0),
+                           ParticleID = cms.untracked.vint32(13,-13),
+                           Status = cms.untracked.vint32(1,1),                        
+                           )
+                         
+mumuFilter = cms.EDFilter("MCMultiParticleFilter",
+            src = cms.untracked.InputTag("generator","unsmeared"),
+            Status = cms.vint32(1),
+            ParticleID = cms.vint32(13),
+            PtMin = cms.vdouble(0.),
+            NumRequired = cms.int32(2),
+            EtaMax = cms.vdouble(999.),
+            AcceptMore = cms.bool(True)
+            )
+                       
 TwoMuonFilter = cms.EDFilter("MCParticlePairFilter",  
     Status = cms.untracked.vint32(1,1),
     MinPt = cms.untracked.vdouble(3.5, 3.5),
@@ -44,4 +66,4 @@ TwoMuonFilter = cms.EDFilter("MCParticlePairFilter",
     MaxInvMass = cms.untracked.double(6.5),
 )
 
-ProductionFilterSequence = cms.Sequence(generator*TwoMuonFilter)
+ProductionFilterSequence = cms.Sequence(generator*bfilter*muFilter*mumuFilter*TwoMuonFilter)
