@@ -45,8 +45,7 @@ muFilter = cms.EDFilter("MCSmartSingleParticleFilter", # in order to select the 
                            )
                          
                         
-mumuFilter = cms.EDFilter("MCMultiParticleFilter",  # in order to make sure there will be an extra(not the same one) muon in addition to the one comes from b.
-
+mumuFilter = cms.EDFilter("MCMultiParticleFilter",  # make sure there will be an extra! muon in addition to the one comes from b.
             src = cms.untracked.InputTag("generator","unsmeared"),
             Status = cms.vint32(1),
             ParticleID = cms.vint32(13),
