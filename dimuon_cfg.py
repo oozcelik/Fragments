@@ -32,19 +32,21 @@ generator = cms.EDFilter("Pythia8GeneratorFilter",
 
 ### Filters ####
                          
-bfilter = cms.EDFilter("PythiaFilter",
+bfilter = cms.EDFilter("PythiaFilter",  # in order to select the b quark.
                        ParticleID = cms.untracked.int32(5)
 )
                          
-muFilter = cms.EDFilter("MCSmartSingleParticleFilter",
-                           MinPt = cms.untracked.vdouble(2.0,2.0),
-                           MinEta = cms.untracked.vdouble(-3.0,-3.0),
-                           MaxEta = cms.untracked.vdouble(3.0,3.0),
+muFilter = cms.EDFilter("MCSmartSingleParticleFilter", # in order to select the muon 
+                           MinPt = cms.untracked.vdouble(2.5,2.5),
+                           MinEta = cms.untracked.vdouble(-2.5,-2.5),
+                           MaxEta = cms.untracked.vdouble( 2.5, 2.5),
                            ParticleID = cms.untracked.vint32(13,-13),
                            Status = cms.untracked.vint32(1,1),                        
                            )
                          
-mumuFilter = cms.EDFilter("MCMultiParticleFilter",
+                        
+mumuFilter = cms.EDFilter("MCMultiParticleFilter",  # in order to make sure there will be an extra(not the same one) muon in addition to the one comes from b.
+
             src = cms.untracked.InputTag("generator","unsmeared"),
             Status = cms.vint32(1),
             ParticleID = cms.vint32(13),
@@ -54,7 +56,7 @@ mumuFilter = cms.EDFilter("MCMultiParticleFilter",
             AcceptMore = cms.bool(True)
             )
                        
-TwoMuonFilter = cms.EDFilter("MCParticlePairFilter",  
+TwoMuonFilter = cms.EDFilter("MCParticlePairFilter",  # in order to put accceptance cuts on muons 
     Status = cms.untracked.vint32(1,1),
     MinPt = cms.untracked.vdouble(3.5, 3.5),
     MaxPt = cms.untracked.vdouble(9999.0,9999.0),
