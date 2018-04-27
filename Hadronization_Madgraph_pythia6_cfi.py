@@ -16,8 +16,8 @@ generator = cms.EDFilter("Pythia6HadronizerFilter",
             'MSTJ(1)   = 1      ! Fragmentation/hadronization on or off',
             'MSTP(61)  = 1      ! Parton showering on or off',
             'MSTP(71)  = 1      ! Parton showering on or off',
-            'MSTP(81)  = 20     ! Multiple interactions on or off,
-            'MSTU(21)  = 1      !Don't stop execution after 10 errors),
+            'MSTP(81)  = 20     ! Multiple interactions on or off',
+            'MSTU(21)  = 1      ! Don't stop execution after 10 errors'),
         parameterSets = cms.vstring(
             'pythiaUESettings',
             'processParameters')
