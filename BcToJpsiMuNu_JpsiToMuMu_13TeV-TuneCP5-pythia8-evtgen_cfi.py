@@ -54,10 +54,9 @@ End
                            pythia8CommonSettingsBlock,
                            pythia8CP5SettingsBlock,
                            processParameters = cms.vstring( "SoftQCD:nonDiffractive = on",
-                                                            'PTFilter:filter = on', # this turn on the filter                                                                            
-                                                            'PTFilter:quarkToFilter = 5', # PDG id of q quark
-                                                            'PTFilter:scaleToFilter = 1.0'
-                           ),
+                                                           '541:onMode = off',
+                                                           '541:addChannel = 1 1.0 0 443 13 14',
+                                                          ),
                            parameterSets = cms.vstring('pythia8CommonSettings',
                                                        'pythia8CP5Settings',
                                                        'processParameters'
