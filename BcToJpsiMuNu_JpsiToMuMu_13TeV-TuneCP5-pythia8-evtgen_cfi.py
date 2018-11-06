@@ -53,8 +53,7 @@ End
                          PythiaParameters = cms.PSet(
                            pythia8CommonSettingsBlock,
                            pythia8CP5SettingsBlock,
-                           processParameters = cms.vstring( "SoftQCD:nonDiffractive = on",
-                                                           '541:onMode = off',
+                           processParameters = cms.vstring( '541:onMode = off',
                                                            '541:addChannel = 1 1.0 0 443 -13 14',
                                                           ),
                            parameterSets = cms.vstring('pythia8CommonSettings',
