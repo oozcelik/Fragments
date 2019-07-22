@@ -58,7 +58,7 @@ mumuFilter = cms.EDFilter("MCMultiParticleFilter",  # make sure there will be an
                        
 TwoMuonFilter = cms.EDFilter("MCParticlePairFilter",  # in order to put accceptance cuts on muons 
     Status = cms.untracked.vint32(1,1),
-    MinPt = cms.untracked.vdouble(3.5, 3.5),
+    MinPt = cms.untracked.vdouble(0., 0.),
     MaxPt = cms.untracked.vdouble(9999.0,9999.0),
     MaxEta = cms.untracked.vdouble( 2.5,2.5),
     MinEta = cms.untracked.vdouble(-2.5,-2.5),
