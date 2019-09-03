@@ -65,6 +65,12 @@ End
 
 generator.PythiaParameters.processParameters.extend(EvtGenExtraParticles)
 
+bfilter = cms.EDFilter("PythiaFilter",
+    MaxEta = cms.untracked.double(9999.0),
+    MinEta = cms.untracked.double(-9999.0),
+    ParticleID = cms.untracked.int32(541)
+)
+
 bcgenfilter = cms.EDFilter("PythiaDauVFilter",
     DaughterIDs = cms.untracked.vint32(443, -13, 14), #J/psi mu+ nu_mu
     MaxEta = cms.untracked.vdouble(999., 999., 999.),
@@ -75,7 +81,7 @@ bcgenfilter = cms.EDFilter("PythiaDauVFilter",
     verbose = cms.untracked.int32(0)
 )
 
-mumugenfilter = cms.EDFilter("PythiaDauVFilter",
+mumugenfilter = cms.EDFilter("PythiaDauVFilter", # technically, j/psi -> mu+ mu- filter.
     DaughterIDs = cms.untracked.vint32(-13, 13),
     MaxEta = cms.untracked.vdouble(2.5, 2.5),
     MinEta = cms.untracked.vdouble(-2.5, -2.5),
@@ -86,4 +92,4 @@ mumugenfilter = cms.EDFilter("PythiaDauVFilter",
     verbose = cms.untracked.int32(0)
 )
 
-ProductionFilterSequence = cms.Sequence(generator*bcgenfilter*mumugenfilter)
+ProductionFilterSequence = cms.Sequence(generator*bfilter*bcgenfilter*mumugenfilter)
