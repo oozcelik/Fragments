@@ -73,9 +73,9 @@ bfilter = cms.EDFilter("PythiaFilter",
 
 bcgenfilter = cms.EDFilter("PythiaDauVFilter",
     DaughterIDs = cms.untracked.vint32(443, -13, 14), #J/psi mu+ nu_mu
-    MaxEta = cms.untracked.vdouble(999., 999., 999.),
-    MinEta = cms.untracked.vdouble(-999., -999., -999.),
-    MinPt = cms.untracked.vdouble(0., 0., 0.),
+    MaxEta = cms.untracked.vdouble(999., 2.5, 999.),
+    MinEta = cms.untracked.vdouble(-999., -2.5, -999.),
+    MinPt = cms.untracked.vdouble(0., 3.5, 0.),
     NumberDaughters = cms.untracked.int32(3),
     ParticleID = cms.untracked.int32(541), # Bc+
     verbose = cms.untracked.int32(0)
