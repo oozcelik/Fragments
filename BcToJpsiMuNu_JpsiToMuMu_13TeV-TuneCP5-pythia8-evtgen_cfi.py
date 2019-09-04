@@ -29,7 +29,8 @@ generator = cms.EDFilter("Pythia8HadronizerFilter",
 # EndDocumentation
 #
 Alias      B_c+sig  B_c+
-ChargeConj B_c-sig  B_c-
+Alias      B_c-sig  B_c-
+ChargeConj B_c-sig  B_c+sig
 Alias      MyJ/psi  J/psi
 ChargeConj MyJ/psi  MyJ/psi
 #
