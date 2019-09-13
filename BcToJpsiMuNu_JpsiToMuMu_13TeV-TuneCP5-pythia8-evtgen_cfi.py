@@ -54,9 +54,8 @@ End
                          PythiaParameters = cms.PSet(
                            pythia8CommonSettingsBlock,
                            pythia8CP5SettingsBlock,
-                           processParameters = cms.vstring( '541:onMode = off',                                                           
-                                                           'ProcessLevel:all = off',
-                                                          ),
+                           processParameters = cms.vstring( 'ProcessLevel:all = off', 
+                                                          )
                            parameterSets = cms.vstring('pythia8CommonSettings',
                                                        'pythia8CP5Settings',
                                                        'processParameters'
