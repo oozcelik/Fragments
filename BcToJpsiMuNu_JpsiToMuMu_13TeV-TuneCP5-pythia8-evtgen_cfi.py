@@ -14,6 +14,7 @@ generator = cms.EDFilter("Pythia8HadronizerFilter",
                            EvtGen130 = cms.untracked.PSet(
                              decay_table = cms.string('GeneratorInterface/EvtGenInterface/data/DECAY_2014_NOLONGLIFE.DEC'),
                              particle_property_file = cms.FileInPath('GeneratorInterface/EvtGenInterface/data/evt_Bc_2014.pdl'),
+                             list_forced_decays = cms.vstring('B_c+sig','B_c-sig'),  
                              convertPythiaCodes = cms.untracked.bool(False),
                              user_decay_embedded= cms.vstring(
 """
@@ -39,7 +40,7 @@ Decay MyJ/psi
 Enddecay
 #
 Decay B_c+sig
-  1.00000  MyJ/psi    mu+            nu_mu              PHOTOS BC_VMN 2;
+  1.00000  MyJ/psi    mu+            nu_mu              PHOTOS BC_VMN 1;
 Enddecay
 CDecay B_c-sig
 #
@@ -47,7 +48,6 @@ End
 """
                              ),
                              operates_on_particles = cms.vint32(541, -541), 
-                            # list_forced_decays = cms.vstring('MyBc+','MyBc-'),  
                            ),
                            parameterSets = cms.vstring('EvtGen130')
                          ),
@@ -55,7 +55,6 @@ End
                            pythia8CommonSettingsBlock,
                            pythia8CP5SettingsBlock,
                            processParameters = cms.vstring( '541:onMode = off',                                                           
-                                                           '541:addChannel = 1 1.0 0 443 -13 14',
                                                            'ProcessLevel:all = off',
                                                           ),
                            parameterSets = cms.vstring('pythia8CommonSettings',
