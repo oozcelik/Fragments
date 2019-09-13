@@ -52,8 +52,8 @@ decayfilter = cms.EDFilter(
     ParticleID      = cms.untracked.int32(531),
     DaughterIDs     = cms.untracked.vint32(13, -13, 22),
     MinPt           = cms.untracked.vdouble(3.5, 3.5, -99.),
-    MinEta          = cms.untracked.vdouble(-2.5, -2.5, -2.5),
-    MaxEta          = cms.untracked.vdouble( 2.5,  2.5, 2.5)
+    MinEta          = cms.untracked.vdouble(-2.5, -2.5, -9999.),
+    MaxEta          = cms.untracked.vdouble( 2.5,  2.5, 9999.)
 )
 
 ProductionFilterSequence = cms.Sequence(generator*bfilter*decayfilter)
